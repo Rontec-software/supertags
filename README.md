@@ -3,7 +3,6 @@
 ## 📌 Requireds
 - Node version >= v18.17.0
 
-
 ## Run Frontend
 ```
 cd apps/frontend
