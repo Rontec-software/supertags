@@ -1,16 +1,18 @@
 import { Express, Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
+import { createUserSchema, updateUserSchema, getUserSchema, deleteUserSchema } from '../schemas/userSchema';
+import validateSchema from '../../middlewares/validateSchema';
 
 const prisma = new PrismaClient();
 
 export default class UserController {
     constructor(readonly server: Express) {
-        server.post('/users', this.createUser);
+        server.post('/users', validateSchema(createUserSchema), this.createUser);
         server.get('/users', this.getUsers);
-        server.get('/users/:id', this.getUser);
-        server.put('/users/:id', this.updateUser);
-        server.delete('/users/:id', this.deleteUser);
+        server.get('/users/:id', validateSchema(getUserSchema), this.getUser);
+        server.put('/users/:id', validateSchema(updateUserSchema), this.updateUser);
+        server.delete('/users/:id', validateSchema(deleteUserSchema), this.deleteUser);
     }
 
     async createUser(req: Request, res: Response) {
