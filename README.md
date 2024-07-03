@@ -14,6 +14,7 @@ npm run dev
 ```
 cd apps/backend
 npm i
+npx prisma db push
 npm run dev
 ```
 
@@ -23,6 +24,17 @@ cd packages/core
 npm i
 npm test
 ```
+
+## Prisma Commands
+```sh
+npx prisma init
+npx prisma generate     # Gerar o prisma client
+npx prisma migrate dev  # Criar uma nova migration
+```
+
+## Docs
+- [Prisma ORM](https://www.prisma.io/docs/getting-started)
+
 
 ## ✒️ Autores
 - **Jhonatan Frade de Oliveira Pereira** - [Jhonatan-Pereira](https://github.com/Jhonatan-Pereira)

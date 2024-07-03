@@ -51,6 +51,10 @@ export default class UserController {
 
     async updateUser(req: Request, res: Response) {
         const { id } = req.params;
+        const userFind = await prisma.user.findUnique({ where: { id } });
+        if (!userFind) {
+            return res.status(404).json({ error: 'User not found' });
+        }
         const { name, email, password } = req.body;
         const hashedPassword = password ? await bcrypt.hash(password, 10) : undefined;
         const user = await prisma.user.update({
