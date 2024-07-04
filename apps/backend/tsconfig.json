@@ -1,4 +1,12 @@
 {
     "extends": "../../packages/typescript-config/base.json",
-    "include": ["."]
+    "include": ["."],
+    "compilerOptions": {
+        "outDir": "dist/",
+        "rootDir": ".",
+        "baseUrl": ".",
+        "paths": {
+            "@backend/*": ["src/*"]
+        }
+    }
 }
