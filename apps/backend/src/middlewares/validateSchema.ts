@@ -11,7 +11,7 @@ const validateSchema = (schema: AnyZodObject) => (req: Request, res: Response, n
         next();
     } catch (error) {
         if (error instanceof ZodError) {
-            return res.status(400).json(error.errors);
+            return res.status(400).json({ errors: error.errors });
         }
         next(error)
     }
